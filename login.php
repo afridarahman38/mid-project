@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Form </title>
+
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+	<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+	<?php
+		$username = $password="";
+		$usernameErr = $passwordErr = "";
+
+		if($_SERVER['REQUEST_METHOD'] == "POST")
+		{
+			if(empty($_POST['username']))
+			{
+				$usernameErr = "please fill up properly";
+			}
+			else
+				{
+					$username = $_POST['username'];
+				}
+			if (empty($_POST['password'])) 
+			{
+				$passwordErr = "please fil up properly";
+			}
+			else 
+			{
+				$password = $_POST['password'];
+			}
+		}
+
+	?>
+
+
+	<nav class ="navbar navbar-expand-Il navbar-info bg-info">
+
+	<h3 class="text-white">Login Form </h3>
+	</nav>
+
+	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+		<legend><b>Account Information:</b></legend>
+		<br>
+		<label for="username">Username: </label>
+		<input type="text" name="username" id="username">
+		<p><?php echo $usernameErr; ?></p>
+		<br>
+	    <label for="password">Password: </label>
+	    <input type="password" name="password" id="password">
+	    <p><?php echo $passwordErr; ?></p>
+	    <br>
+
+	<input type="submit" value="Submit" > 
+	</form>
+
+</body>
+</html>
